@@ -12,9 +12,19 @@
 		2B347EF517D03BE10058F0B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B347EF417D03BE10058F0B5 /* CoreGraphics.framework */; };
 		2B347EFB17D03BE10058F0B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B347EF917D03BE10058F0B5 /* InfoPlist.strings */; };
 		2B347EFD17D03BE10058F0B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B347EFC17D03BE10058F0B5 /* main.m */; };
-		2B347F0117D03BE10058F0B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B347F0017D03BE10058F0B5 /* AppDelegate.m */; };
+		2B347F0117D03BE10058F0B5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B347F0017D03BE10058F0B5 /* AppDelegate.mm */; };
 		2B347F0A17D03BE10058F0B5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B347F0817D03BE10058F0B5 /* MainStoryboard.storyboard */; };
-		2B347F0D17D03BE10058F0B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B347F0C17D03BE10058F0B5 /* ViewController.m */; };
+		2B347F0D17D03BE10058F0B5 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B347F0C17D03BE10058F0B5 /* ViewController.mm */; };
+		2B583D4517D705F100D34EF0 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B583D4417D705F100D34EF0 /* opencv2.framework */; };
+		2B583D4A17D7065700D34EF0 /* AVFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B583D4717D7065700D34EF0 /* AVFUtils.m */; };
+		2B583D4B17D7065700D34EF0 /* Converter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B583D4917D7065700D34EF0 /* Converter.mm */; };
+		2B583D5017D7072F00D34EF0 /* ShelfManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B583D4F17D7072F00D34EF0 /* ShelfManager.mm */; };
+		2B583D5517D7075200D34EF0 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B583D5217D7075200D34EF0 /* FileManager.m */; };
+		2B583D5617D7075200D34EF0 /* Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B583D5417D7075200D34EF0 /* Utils.mm */; };
+		2B583D5817D7162F00D34EF0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B583D5717D7162F00D34EF0 /* AVFoundation.framework */; };
+		2B583D5A17D718B700D34EF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B583D5917D718B700D34EF0 /* QuartzCore.framework */; };
+		2B583D5C17D718D400D34EF0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B583D5B17D718D400D34EF0 /* CoreVideo.framework */; };
+		2B583D5E17D718F800D34EF0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B583D5D17D718F800D34EF0 /* CoreMedia.framework */; };
 		2BA5A05717D5BD52002535A5 /* 0218.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA5A05617D5BD52002535A5 /* 0218.png */; };
 		2BA5A05917D5BF1E002535A5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA5A05817D5BF1E002535A5 /* Default-568h@2x.png */; };
 		2BA5A05B17D5BF34002535A5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA5A05A17D5BF34002535A5 /* Default@2x.png */; };
@@ -33,10 +43,25 @@
 		2B347EFC17D03BE10058F0B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B347EFE17D03BE10058F0B5 /* Shelf-Manager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shelf-Manager-Prefix.pch"; sourceTree = "<group>"; };
 		2B347EFF17D03BE10058F0B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2B347F0017D03BE10058F0B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2B347F0017D03BE10058F0B5 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		2B347F0917D03BE10058F0B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2B347F0B17D03BE10058F0B5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2B347F0C17D03BE10058F0B5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2B347F0C17D03BE10058F0B5 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		2B583D4417D705F100D34EF0 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		2B583D4617D7065700D34EF0 /* AVFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFUtils.h; sourceTree = "<group>"; };
+		2B583D4717D7065700D34EF0 /* AVFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVFUtils.m; sourceTree = "<group>"; };
+		2B583D4817D7065700D34EF0 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
+		2B583D4917D7065700D34EF0 /* Converter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Converter.mm; sourceTree = "<group>"; };
+		2B583D4E17D7072F00D34EF0 /* ShelfManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelfManager.h; sourceTree = "<group>"; };
+		2B583D4F17D7072F00D34EF0 /* ShelfManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShelfManager.mm; sourceTree = "<group>"; };
+		2B583D5117D7075200D34EF0 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		2B583D5217D7075200D34EF0 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		2B583D5317D7075200D34EF0 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		2B583D5417D7075200D34EF0 /* Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Utils.mm; sourceTree = "<group>"; };
+		2B583D5717D7162F00D34EF0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2B583D5917D718B700D34EF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2B583D5B17D718D400D34EF0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2B583D5D17D718F800D34EF0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2BA5A05617D5BD52002535A5 /* 0218.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0218.png; path = Resources/0218.png; sourceTree = "<group>"; };
 		2BA5A05817D5BF1E002535A5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		2BA5A05A17D5BF34002535A5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -50,6 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B583D5E17D718F800D34EF0 /* CoreMedia.framework in Frameworks */,
+				2B583D5C17D718D400D34EF0 /* CoreVideo.framework in Frameworks */,
+				2B583D5A17D718B700D34EF0 /* QuartzCore.framework in Frameworks */,
+				2B583D5817D7162F00D34EF0 /* AVFoundation.framework in Frameworks */,
+				2B583D4517D705F100D34EF0 /* opencv2.framework in Frameworks */,
 				2B347EF117D03BE10058F0B5 /* UIKit.framework in Frameworks */,
 				2B347EF317D03BE10058F0B5 /* Foundation.framework in Frameworks */,
 				2B347EF517D03BE10058F0B5 /* CoreGraphics.framework in Frameworks */,
@@ -79,6 +109,11 @@
 		2B347EEF17D03BE10058F0B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B583D5D17D718F800D34EF0 /* CoreMedia.framework */,
+				2B583D5B17D718D400D34EF0 /* CoreVideo.framework */,
+				2B583D5917D718B700D34EF0 /* QuartzCore.framework */,
+				2B583D5717D7162F00D34EF0 /* AVFoundation.framework */,
+				2B583D4417D705F100D34EF0 /* opencv2.framework */,
 				2B347EF017D03BE10058F0B5 /* UIKit.framework */,
 				2B347EF217D03BE10058F0B5 /* Foundation.framework */,
 				2B347EF417D03BE10058F0B5 /* CoreGraphics.framework */,
@@ -90,10 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				2B347EFF17D03BE10058F0B5 /* AppDelegate.h */,
-				2B347F0017D03BE10058F0B5 /* AppDelegate.m */,
+				2B347F0017D03BE10058F0B5 /* AppDelegate.mm */,
 				2B347F0817D03BE10058F0B5 /* MainStoryboard.storyboard */,
 				2B347F0B17D03BE10058F0B5 /* ViewController.h */,
-				2B347F0C17D03BE10058F0B5 /* ViewController.m */,
+				2B347F0C17D03BE10058F0B5 /* ViewController.mm */,
+				2B583D4317D6FE0900D34EF0 /* Classes */,
 				2B347F1317D03D650058F0B5 /* Resources */,
 				2B347EF717D03BE10058F0B5 /* Supporting Files */,
 			);
@@ -122,6 +158,31 @@
 				2BA5A05617D5BD52002535A5 /* 0218.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		2B583D4317D6FE0900D34EF0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2B583D5317D7075200D34EF0 /* Utils.h */,
+				2B583D5417D7075200D34EF0 /* Utils.mm */,
+				2B583D4617D7065700D34EF0 /* AVFUtils.h */,
+				2B583D4717D7065700D34EF0 /* AVFUtils.m */,
+				2B583D5117D7075200D34EF0 /* FileManager.h */,
+				2B583D5217D7075200D34EF0 /* FileManager.m */,
+				2B583D4D17D7070500D34EF0 /* Converters */,
+				2B583D4817D7065700D34EF0 /* Converter.h */,
+				2B583D4917D7065700D34EF0 /* Converter.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2B583D4D17D7070500D34EF0 /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				2B583D4E17D7072F00D34EF0 /* ShelfManager.h */,
+				2B583D4F17D7072F00D34EF0 /* ShelfManager.mm */,
+			);
+			path = Converters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,8 +255,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B347EFD17D03BE10058F0B5 /* main.m in Sources */,
-				2B347F0117D03BE10058F0B5 /* AppDelegate.m in Sources */,
-				2B347F0D17D03BE10058F0B5 /* ViewController.m in Sources */,
+				2B347F0117D03BE10058F0B5 /* AppDelegate.mm in Sources */,
+				2B347F0D17D03BE10058F0B5 /* ViewController.mm in Sources */,
+				2B583D4A17D7065700D34EF0 /* AVFUtils.m in Sources */,
+				2B583D4B17D7065700D34EF0 /* Converter.mm in Sources */,
+				2B583D5017D7072F00D34EF0 /* ShelfManager.mm in Sources */,
+				2B583D5517D7075200D34EF0 /* FileManager.m in Sources */,
+				2B583D5617D7075200D34EF0 /* Utils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +346,10 @@
 		2B347F1117D03BE10058F0B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shelf-Manager/Shelf-Manager-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Shelf-Manager/Shelf-Manager-Info.plist";
@@ -291,6 +361,10 @@
 		2B347F1217D03BE10058F0B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shelf-Manager/Shelf-Manager-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Shelf-Manager/Shelf-Manager-Info.plist";

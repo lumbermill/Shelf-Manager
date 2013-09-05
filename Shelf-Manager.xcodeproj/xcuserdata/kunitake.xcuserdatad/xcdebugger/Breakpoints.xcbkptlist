@@ -16,5 +16,44 @@
          landmarkName = "-handleSingleTap2:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Shelf-Manager/ViewController.mm"
+         timestampString = "400058969.890633"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "275"
+         endingLineNumber = "275"
+         landmarkName = "-sliceSaveBtn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Shelf-Manager/ViewController.mm"
+         timestampString = "400066641.669222"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "491"
+         endingLineNumber = "491"
+         landmarkName = "-singleTap1:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Shelf-Manager/ViewController.mm"
+         timestampString = "400061780.240602"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "298"
+         endingLineNumber = "298"
+         landmarkName = "-sliceSaveBtn:"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
