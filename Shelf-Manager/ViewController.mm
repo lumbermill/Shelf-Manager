@@ -321,6 +321,11 @@ UIActivityIndicatorView *indicator;
     }
     else
     {
+        // アクティビティインジケータを表示
+        [indicator startAnimating];
+        // RunLoopに戻らないと表示されないので、一瞬戻す
+        [[NSRunLoop currentRunLoop]runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.0]];
+        
         CGRect rect;
         CGPoint ptCxy1, ptCxy2;
         UIImage *srcUIImg = effBufImage;
@@ -404,6 +409,10 @@ UIActivityIndicatorView *indicator;
                 k++;
             }
         }
+        // アクティビティインジケータが動いていたら止める
+        if (indicator.isAnimating) {
+            [indicator stopAnimating];
+        }
     }
 }
 
@@ -445,7 +454,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)singleTap1:(CGPoint)point {
 
-    CGFloat viewWidth = 40;
+    CGFloat viewWidth = 60;
     CGFloat lineWidth = 6;
     CGRect rect = CGRectMake(point.x - viewWidth/2,
                              0,
@@ -508,7 +517,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 }
 - (void)singleTap2:(CGPoint)point {
     
-    CGFloat viewWidth = 40;
+    CGFloat viewWidth = 60;
     CGFloat lineWidth = 6;
     CGRect rect = CGRectMake(0,
                              point.y - viewWidth/2,

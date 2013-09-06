@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Shelf-Manager/ViewController.mm"
-         timestampString = "400149789.379603"
+         timestampString = "400152892.713558"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "506"
-         endingLineNumber = "506"
+         startingLineNumber = "515"
+         endingLineNumber = "515"
          landmarkName = "-singleTap1:"
          landmarkType = "5">
       </FileBreakpoint>
