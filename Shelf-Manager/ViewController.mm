@@ -24,6 +24,7 @@ UITapGestureRecognizer *singleTap1;
 UITapGestureRecognizer *singleTap2;
 UITapGestureRecognizer *doubleTap1;
 UITapGestureRecognizer *doubleTap2;
+UIPinchGestureRecognizer *pinchGesture;
 
 // アクティビティインジケータ
 UIActivityIndicatorView *indicator;
@@ -141,11 +142,7 @@ UIActivityIndicatorView *indicator;
     else {
         // エラー処理
         NSLog(@"Photo Err!!");
-    }
-    
-    // ユーザーデフォルトの設定
-    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //[userDefaults setInteger:buttonIndex forKey:@"kIndex"];
+    }    
 }
 
 
@@ -207,10 +204,22 @@ UIActivityIndicatorView *indicator;
     [self.scrollView setContentOffset:CGPointZero];
     [self hitStraightLinesWritting];
     
+    /*
     // センタリング
     CGPoint center = CGPointMake(photoView.frame.size.width / 2 - self.view.frame.size.width / 2,
                                  photoView.frame.size.height / 2 - self.view.frame.size.height / 2);
     [self.scrollView setContentOffset:center];
+    */
+    
+    // スケール設定する
+    float   hScale, vScale, minScale;
+    hScale = CGRectGetWidth(self.view.bounds) / photoView.frame.size.width;
+    vScale = CGRectGetHeight(self.view.bounds) / photoView.frame.size.height;
+    minScale = MIN(hScale, vScale);
+    self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.maximumZoomScale = 1.0f;
+    self.scrollView.zoomScale = minScale;
+
 }
 
 
@@ -228,8 +237,9 @@ UIActivityIndicatorView *indicator;
         // OpenCVでの画像処理
         cv::Mat src_img = [Utils CVMatFromUIImage:effBufImage];
         src_img = [converter convert:src_img];
-        UIImage *effectedImage = [Utils UIImageFromCVMat:src_img];
-        photoView.image = effectedImage;
+        //UIImage *effectedImage = [Utils UIImageFromCVMat:src_img];
+        //photoView.image = effectedImage;
+        photoView.image = effBufImage;
         
         // アクティビティインジケータが動いていたら止める
         if (indicator.isAnimating) {
@@ -277,7 +287,8 @@ UIActivityIndicatorView *indicator;
     {
         UIImageView *imageView = [_xLinesArray objectAtIndex:i];
         if ([[NSNumber numberWithInt:imageView.center.x]intValue] >= 0 &&
-            [[NSNumber numberWithInt:imageView.center.x]intValue] <= photoView.frame.size.width) {
+            [[NSNumber numberWithInt:imageView.center.x]intValue] <=
+            photoView.frame.size.width / self.scrollView.zoomScale) {
             // OpenCVが範囲外を返してくることがあるようなので回避
             [appliedApicesX addObject:[NSNumber numberWithInt:imageView.center.x]];
         }
@@ -288,7 +299,8 @@ UIActivityIndicatorView *indicator;
     {
         UIImageView *imageView = [_yLinesArray objectAtIndex:j];
         if ([[NSNumber numberWithInt:imageView.center.y]intValue] >= 0 &&
-            [[NSNumber numberWithInt:imageView.center.y]intValue] <= photoView.frame.size.height) {
+            [[NSNumber numberWithInt:imageView.center.y]intValue] <=
+            photoView.frame.size.height / self.scrollView.zoomScale) {
             // OpenCVが範囲外を返してくることがあるようなので回避
             [appliedApicesY addObject:[NSNumber numberWithInt:imageView.center.y]];
         }
@@ -416,6 +428,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)handleSingleTap1:(UITapGestureRecognizer*)recognizer {
     
     CGPoint point = [recognizer locationInView:self.view];
+    point.x = (point.x + self.scrollView.contentOffset.x) / self.scrollView.zoomScale;
+    point.y = (point.y + self.scrollView.contentOffset.y) / self.scrollView.zoomScale;
     [self singleTap1:point];
     
 }
@@ -423,21 +437,21 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)handleSingleTap2:(UITapGestureRecognizer*)recognizer {
     
     CGPoint point = [recognizer locationInView:self.view];
+    point.x = (point.x + self.scrollView.contentOffset.x) / self.scrollView.zoomScale;
+    point.y = (point.y + self.scrollView.contentOffset.y) / self.scrollView.zoomScale;
     [self singleTap2:point];
 
 }
 
 - (void)singleTap1:(CGPoint)point {
 
-    CGFloat viewWidth = 30;
+    CGFloat viewWidth = 40;
     CGFloat lineWidth = 6;
-    CGRect rect = CGRectMake(point.x - viewWidth/2 + self.scrollView.contentOffset.x,
+    CGRect rect = CGRectMake(point.x - viewWidth/2,
                              0,
                              viewWidth,
-                             photoView.frame.size.height);
-    //UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+                             photoView.frame.size.height / self.scrollView.zoomScale);
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
-    //imageView.image = linesUIImage;
     imageView.backgroundColor = [UIColor clearColor];
     imageView.userInteractionEnabled = YES;
     
@@ -456,7 +470,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     CGContextSetShadowWithColor(context, CGSizeMake(lineWidth/2, 0.0), 1.5, [UIColor yellowColor].CGColor);
     CGContextSetLineWidth(context, lineWidth);
     CGContextMoveToPoint(context, viewWidth/2 - lineWidth/2, 0);  // 始点
-    CGContextAddLineToPoint(context, viewWidth/2 - lineWidth/2, photoView.frame.size.height); // 終点
+    CGContextAddLineToPoint(context, viewWidth/2 - lineWidth/2, imageView.frame.size.height); // 終点
         
     // 描画の開始～終了座標まで線を引く
     CGContextStrokePath(context);
@@ -488,20 +502,19 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
      [imageView addGestureRecognizer:longPressX];
      */
     
+    // imageViewを配列に追加
     [_xLinesArray addObject:imageView];
     [photoView addSubview:imageView];
 }
 - (void)singleTap2:(CGPoint)point {
     
-    CGFloat viewWidth = 30;
+    CGFloat viewWidth = 40;
     CGFloat lineWidth = 6;
     CGRect rect = CGRectMake(0,
-                             point.y - viewWidth/2 + self.scrollView.contentOffset.y,
-                             photoView.frame.size.width,
+                             point.y - viewWidth/2,
+                             photoView.frame.size.width / self.scrollView.zoomScale,
                              viewWidth);
-    //UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
-    //imageView.image = linesUIImage;
     imageView.backgroundColor = [UIColor clearColor];
     imageView.userInteractionEnabled = YES;
     
@@ -520,7 +533,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     CGContextSetShadowWithColor(context, CGSizeMake(0.0, lineWidth/2), 1.5, [UIColor yellowColor].CGColor);
     CGContextSetLineWidth(context, lineWidth);
     CGContextMoveToPoint(context, 0, viewWidth/2 - lineWidth/2);  // 始点
-    CGContextAddLineToPoint(context, photoView.frame.size.width, viewWidth/2 - lineWidth/2 ); // 終点
+    CGContextAddLineToPoint(context, imageView.frame.size.width, viewWidth/2 - lineWidth/2 ); // 終点
     
     // 描画の開始～終了座標まで線を引く
     CGContextStrokePath(context);
@@ -552,11 +565,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
      [imageView addGestureRecognizer:longPressY];
      */
     
+    // imageViewを配列に追加
     [_yLinesArray addObject:imageView];
     [photoView addSubview:imageView];
-    
-    // -90°回転
-    //imageView.transform = CGAffineTransformMakeRotation(-90*M_PI/180);
 }
 
 
@@ -574,7 +585,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     NSInteger indexX = [_xLinesArray indexOfObject:recognizer.view];
     NSInteger indexY = [_yLinesArray indexOfObject:recognizer.view];
 
-    // 要素があったか?
+    // 該当imageViewを配列から削除
     if (indexX != NSNotFound) {
         NSLog(@"Xの%d番目です", indexX);
         [_xLinesArray removeObjectAtIndex:indexX];
@@ -584,7 +595,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         [_yLinesArray removeObjectAtIndex:indexY];
     }
     
-    // ImageViewを削除
+    // ImageViewをsubviewから削除
     [recognizer.view removeFromSuperview];
 }
 
@@ -628,7 +639,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
      CGPoint distance = [recognizer translationInView:self.view];
      
      // センターの座標に移動距離を加える
-     center.x = center.x + distance.x;
+     center.x = center.x + distance.x / self.scrollView.zoomScale;
      center.y = center.y + 0;
      
      // 中心の再設定
@@ -646,7 +657,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     // センターの座標に移動距離を加える
     center.x = center.x + 0;
-    center.y = center.y + distance.y;
+    center.y = center.y + distance.y / self.scrollView.zoomScale;
     
     // 中心の再設定
     recognizer.view.center = center;
@@ -656,6 +667,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
 }
 
+// ピンチイン/アウトで拡大縮小
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)_scrollView
+{
+	return photoView;
+}
 
 - (IBAction)levelSlider:(UISlider *)sender {
     converter.gain = [sender value];
